@@ -10,10 +10,14 @@ public class Drivetrain extends RobotModule{
 
 	Value HI_GEAR = Value.kReverse;
 	final Value LO_GEAR = Value.kForward;
+	double straightSum;
+	double turnSum;
+	double lastOffYaw;
 	
 	public Drivetrain(RobotInputs inputs, RobotOutputs outputs) {
 		super(inputs, outputs);
 		// TODO Auto-generated constructor stub
+		straightSum = 0;
 	}
 
 	@Override
@@ -83,6 +87,51 @@ public class Drivetrain extends RobotModule{
 	public double getEncoderDist() {
 		return 1.25*(Math.abs(inputs.leftEncoder.getRaw())>Math.abs(inputs.rightEncoder.getRaw())? 
 				inputs.leftEncoder.getRaw():inputs.rightEncoder.getRaw());
+	}
+	
+	public void goStraight (double setBearing, double speed) {
+		double currentYaw = inputs.navx.getYaw();
+		double offYaw = setBearing - currentYaw;
+		
+		if (offYaw > 0.7 || offYaw < -0.7) {
+			if (offYaw > 0 && offYaw < 6) straightSum = straightSum + 0.0005;
+			else if (offYaw < 0 && offYaw > -6) straightSum = straightSum - 0.0005;
+		}
+		else offYaw = 0;
+		
+		double newPower = .05 * offYaw + straightSum;
+		double leftSide = speed + newPower;
+		double rightSide = speed - newPower;
+		drive(leftSide, rightSide);
+	}
+	public void resetStraightSum() {
+		straightSum=0;
+	}
+	public void turnToAngle(double setBearing) {
+		double currentYaw = inputs.navx.getYaw();
+		double offYaw = setBearing - currentYaw;
+
+		if (offYaw * lastOffYaw <= 0) {
+			turnSum = 0;
+		}
+		if (offYaw > 0.6 || offYaw < -0.6) {
+			if (offYaw < 20 && offYaw > -20) {
+				if (offYaw > 0) turnSum = turnSum + 0.01;
+				else turnSum = turnSum - 0.01;
+			}
+			double newPower = .03 * offYaw + turnSum + .05 * (offYaw - lastOffYaw) ;
+			if (newPower > 0.7) newPower = 0.7;
+			else if (newPower < -0.7) newPower = -0.7;
+
+			drive(newPower, - newPower);
+			lastOffYaw = offYaw;
+		}
+
+		else {
+			drive(0,0);
+			lastOffYaw = offYaw;
+		}
+	
 	}
 
 }

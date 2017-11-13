@@ -25,6 +25,7 @@ public class Indexer extends RobotModule{
 		setSpeed(0);
 	}
 
+
 	@Override
 	public void setSpeed(double speed) {
 		// TODO Auto-generated method stub

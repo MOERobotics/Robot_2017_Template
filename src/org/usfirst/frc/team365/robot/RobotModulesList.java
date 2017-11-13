@@ -18,6 +18,7 @@ public final class RobotModulesList {
 	public Shooter shooter;
 	public BallFlap ballflap;
 	public GearThing gearthing;
+	
 	public List<RobotModule>allModules;
 
 	

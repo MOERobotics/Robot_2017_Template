@@ -1,7 +1,7 @@
 
 package org.usfirst.frc.team365.robot;
 
-import org.usfirst.frc.team365.Routines.*;
+import org.usfirst.frc.team365.routines.*;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 
@@ -9,75 +9,64 @@ public class Robot extends IterativeRobot {
 	public static RobotInputs inputs;
 	public static RobotOutputs outputs;
 	public static RobotModulesList modules;
-
-	int robotLoopCounter;
-	int disabledLoopCounter;
-	int autoLoopCounter;
-	int teleopLoopCounter;
+	public static RobotSharedVariables variables;
 
 	Teleop teleop;
 	Disabled disabled;
 	Autonomous auto;
-	Roboot roboot;
+	AllTheTime allTheTime;
 
 	public Robot() {
 		inputs = new RobotInputs();
 		outputs = new RobotOutputs();
 		modules = new RobotModulesList(inputs, outputs);
+		variables = new RobotSharedVariables();
 
-		teleop = new Teleop(inputs, outputs, modules);
-		disabled = new Disabled(inputs, outputs, modules);
-		auto = new Autonomous(inputs, outputs, modules);
-		roboot = new Roboot(inputs, outputs, modules);
+		teleop = new Teleop(inputs, outputs, modules, variables);
+		disabled = new Disabled(inputs, outputs, modules, variables);
+		auto = new Autonomous(inputs, outputs, modules, variables);
+		allTheTime = new AllTheTime(inputs, outputs, modules, variables);
 
 	}
 
 	@Override
 	public void robotInit() {
-		robotLoopCounter = 0;
-		roboot.init();
+		allTheTime.init();
 	}
 
 	@Override
 	public void robotPeriodic() {
-		robotLoopCounter++;
-		roboot.periodic(robotLoopCounter);
+		allTheTime.periodic();
 	}
 
 	@Override
 	public void disabledInit() {
-		disabledLoopCounter = 0;
 		disabled.init();
 	}
 
 	@Override
 	public void disabledPeriodic() {
-		disabledLoopCounter++;
-		disabled.periodic(disabledLoopCounter);
+		disabled.periodic();
 	}
 
 	@Override
 	public void autonomousInit() {
-		autoLoopCounter = 0;
 		auto.init();
 	}
 
 	@Override
 	public void autonomousPeriodic() {
-		autoLoopCounter++;
-		auto.periodic(autoLoopCounter);
+		auto.periodic();
 	}
 
 	@Override
 	public void teleopInit() {
-		teleopLoopCounter = 0;
 		teleop.init();
 	}
 
 	@Override
 	public void teleopPeriodic() {
-		teleopLoopCounter++;
-		teleop.periodic(teleopLoopCounter);
+		teleop.periodic();
 	}
 
 }

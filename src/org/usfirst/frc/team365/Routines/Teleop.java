@@ -1,4 +1,4 @@
-package org.usfirst.frc.team365.Routines;
+package org.usfirst.frc.team365.routines;
 
 import org.usfirst.frc.team365.robot.*;
 import org.usfirst.frc.team365.structural.*;
@@ -13,11 +13,12 @@ public class Teleop extends RobotRoutine{
 	double yJoy=0;
 	
 	
-	public Teleop(RobotInputs inputs, RobotOutputs outputs, RobotModulesList modules) {
-		super(inputs, outputs, modules);
+	public Teleop(RobotInputs inputs, RobotOutputs outputs, RobotModulesList modules, RobotSharedVariables variables) {
+		super(inputs, outputs, modules, variables);
 	}
 	
 	public void init() {
+		variables.localLoopCounter=0;
 		modules.allModules.forEach((x)->x.HALT());
 		runShooter = false;
 		runFeeder = false;
@@ -25,7 +26,8 @@ public class Teleop extends RobotRoutine{
 		lastButtonD10 = false;
 	}
 	
-	public void periodic(int loopCounter) {
+	public void periodic() {
+		variables.localLoopCounter++;
 		if(Robot.inputs.funStick.getY()>.5) {
 			modules.climber.on();
 		} else {

@@ -6,14 +6,16 @@ public abstract class RobotRoutine {
 	protected static RobotInputs  inputs;
 	protected static RobotOutputs outputs;
 	protected static RobotModulesList modules;
-	public RobotRoutine(RobotInputs inputs, RobotOutputs outputs, RobotModulesList modules){
+	protected static RobotSharedVariables variables;
+	public RobotRoutine(RobotInputs inputs, RobotOutputs outputs, RobotModulesList modules, RobotSharedVariables variables){
 		RobotRoutine.inputs=inputs;
 		RobotRoutine.outputs=outputs;
 		RobotRoutine.modules=modules;
+		RobotRoutine.variables=variables;
 	}
 	
 	public abstract void init();
-	public abstract void periodic(int loopCounter);
+	public abstract void periodic();
 
 
 	
