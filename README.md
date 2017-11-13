@@ -1,2 +1,2 @@
 # Robot_2017_Template
-A template for building robot code
+Robot_2017 code modified to create a code template
