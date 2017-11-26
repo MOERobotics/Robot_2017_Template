@@ -1,4 +1,4 @@
-//Hey!  Pay attention.
+//Hey!  Pay
 
 package org.usfirst.frc.team365.robot;
 
