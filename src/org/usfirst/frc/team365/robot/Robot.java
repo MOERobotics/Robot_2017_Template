@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // Louminator and Kevin were here.
+=======
+// Louminator and Kevin weren't here.
+>>>>>>> 797c278f9f72d91c92159019210158cdd0846689
 package org.usfirst.frc.team365.robot;
 
 import org.usfirst.frc.team365.routines.*;
