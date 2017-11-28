@@ -1,4 +1,4 @@
-// ABC ITS EASY AS 123 ITS EASY AS ABC 123 Do MOE Ri baby you and mi
+// ABC its easy as 123 its easy as ABC 123 Do MOE Ri baby you and MOE
 
 package org.usfirst.frc.team365.robot;
 
