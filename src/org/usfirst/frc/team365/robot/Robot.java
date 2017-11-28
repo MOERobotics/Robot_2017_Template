@@ -1,4 +1,4 @@
-// Louminator and Kevin was here.
+// Louminator and Kevin were here.
 package org.usfirst.frc.team365.robot;
 
 import org.usfirst.frc.team365.routines.*;
