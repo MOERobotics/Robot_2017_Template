@@ -6,6 +6,8 @@ import org.usfirst.frc.team365.routines.*;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 
+// MOE GO
+
 public class Robot extends IterativeRobot {
 	public static RobotInputs inputs;
 	public static RobotOutputs outputs;
