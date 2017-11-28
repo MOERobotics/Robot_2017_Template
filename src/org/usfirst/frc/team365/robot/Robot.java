@@ -1,13 +1,13 @@
-<<<<<<< HEAD
-// Louminator and Kevin were here.
-=======
-// Louminator and Kevin weren't here.
->>>>>>> 797c278f9f72d91c92159019210158cdd0846689
+// ABC its easy as 123 its easy as ABC 123 Do MOE Ri baby you and MOE
+//new MOE stuff
+
 package org.usfirst.frc.team365.robot;
 
 import org.usfirst.frc.team365.routines.*;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+
+// MOE GO
 
 public class Robot extends IterativeRobot {
 	public static RobotInputs inputs;
