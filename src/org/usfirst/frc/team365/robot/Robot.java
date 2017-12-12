@@ -4,9 +4,7 @@ package org.usfirst.frc.team365.robot;
 import org.usfirst.frc.team365.routines.*;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-//internetexplorer
 
-// MOE GO
 
 public class Robot extends IterativeRobot {
 	public static RobotInputs inputs;
