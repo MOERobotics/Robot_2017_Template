@@ -115,7 +115,7 @@ public class Teleop extends RobotRoutine{
 			lastButtonD3 = false;
 		}
 		
-		if (inputs.funStick.getY()<-0.5) {
+		if (inputs.funStick.getY()<-0.75) {
 			modules.ballflap.up();
 		} else {
 			modules.ballflap.down();
